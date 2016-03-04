@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Represent!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="intro">Welcome to Represent!</string>
+    <string name="title_activity_reps">RepsActivity</string>
+    <string name="title_activity_detailed">DetailedActivity</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Represent!</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_rep">RepActivity</string>
+
+    <string name="picker_rep1">Barbara Lee</string>
+    <string name="picker_rep2">Barbara Boxer</string>
+    <string name="picker_rep3">Diane Feinstein</string>
+
+    <string name="demo">Democrat</string>
+
+</resources>
