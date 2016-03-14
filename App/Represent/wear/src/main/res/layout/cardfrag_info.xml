@@ -22,7 +22,7 @@
             android:fontFamily="sans-serif-light"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Swipe right for Reps"
+            android:text="Swipe left for Reps"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="12.5sp"/>
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:text="Swipe down for 2012 Vote Info"
+            android:text="Swipe up for 2012 Vote Info"
             android:textColor="@color/black"
             android:textSize="12.5sp"/>
         <TextView

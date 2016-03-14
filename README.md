@@ -2,7 +2,7 @@
 
 An phone+watch application that lists info about congressional representatives given a zip code or your current location. 
 
-Disclaimer: This is by no means a fully developed application.
+See more info about the various screens of the application (along with screenshots) in the pdf labeled CS160Project2Represent.
 
 ## Authors
 
@@ -10,11 +10,7 @@ Kyle Liang ([kyletliang@berkeley.edu](mailto:kyletliang@berkeley.edu))
 
 ## Demo Video
 
-See [your demo video title here] (https://link_to_your_video)
-
-## Screenshots
-
-<img src="screenshots/main.png" height="400" alt="Screenshot"/>
+See [a simple runthrough of the application here.] (https://youtu.be/eXyvRSVM9Cs)
 
 ## Acknowledgments
 
