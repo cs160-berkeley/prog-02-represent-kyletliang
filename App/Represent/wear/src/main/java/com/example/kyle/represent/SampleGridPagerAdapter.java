@@ -35,14 +35,21 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
     public Fragment getFragment(int row, int col) {
         RepActivity.Page page = PAGES[row][col];
         CardFragment fragment;
-        if (row == 1)
-            fragment = new VoteCardFragment();
-        else
-            fragment = new RepCardFragment();
         Bundle b = new Bundle();
-        b.putString("NAME", page.getRep());
-        b.putString("PARTY", page.getParty());
-        b.putString("ZIP", page.getZipCode());
+        if (row == 0 && col == 0){
+            fragment = new InfoCardFragment();
+        }
+        else if (row == 1) {
+            fragment = new VoteCardFragment();
+            b.putString("OBAMA", page.obamaVote);
+            b.putString("ROMNEY", page.romneyVote);
+        }
+        else {
+            fragment = new RepCardFragment();
+            b.putString("NAME", page.rep);
+            b.putString("PARTY", page.party);
+        }
+        b.putString("COUNTY", page.county);
         fragment.setArguments(b);
         fragment.setCardGravity(Gravity.BOTTOM);
         fragment.setExpansionEnabled(true);
@@ -62,7 +69,7 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public Drawable getBackgroundForPage(int row, int column) {
-        return mContext.getResources().getDrawable(PAGES[row][column].getmImageResource(), null);
+        return mContext.getResources().getDrawable(PAGES[row][column].mImageResource, null);
     }
 
 

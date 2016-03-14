@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
  */
 public class RepCardFragment extends CardFragment{
 
-    TextView nameView, partyView, zipView;
+    TextView nameView, partyView, countyView;
     Button infoButton;
 
     @Override
@@ -27,13 +27,13 @@ public class RepCardFragment extends CardFragment{
 
         nameView = (TextView) root.findViewById(R.id.name);
         partyView = (TextView) root.findViewById(R.id.party);
-        zipView = (TextView) root.findViewById(R.id.zip);
+//        countyView = (TextView) root.findViewById(R.id.county);
         infoButton = (Button) root.findViewById(R.id.infoButton);
 
 
         nameView.setText(b.getString("NAME"));
         partyView.setText(b.getString("PARTY"));
-        zipView.setText(b.getString("ZIP"));
+//        countyView.setText(b.getString("COUNTY"));
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override

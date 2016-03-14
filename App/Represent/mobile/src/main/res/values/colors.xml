@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="demoBlue">#9929B6F6</color>
+    <color name="repubRed">#99D32F2F</color>
+    <color name="indep">#808E24AA</color>
 </resources>

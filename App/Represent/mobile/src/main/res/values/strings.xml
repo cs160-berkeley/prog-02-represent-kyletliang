@@ -4,4 +4,7 @@
     <string name="intro">Welcome to Represent!</string>
     <string name="title_activity_reps">RepsActivity</string>
     <string name="title_activity_detailed">DetailedActivity</string>
+
+
+
 </resources>

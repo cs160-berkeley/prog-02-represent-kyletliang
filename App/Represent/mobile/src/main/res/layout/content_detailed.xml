@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/repPic"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="225dp"
+            android:layout_height="275dp"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="6dip"
             android:contentDescription="TODO"
@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "End of term: January 3, 2017"
+            android:id= "@+id/end_term"
             android:textSize="24sp"
             android:paddingBottom="20dp"/>
         <LinearLayout
@@ -53,17 +53,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "Committee:"
+                android:text = "Committees:"
                 android:textSize="24sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "U.S. Senate Committee on Foreign Relations"
+                android:id = "@+id/com1"
                 android:textSize="18sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "U.S. Senate Select Committee on Ethics"
+                android:id = "@+id/com2"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id = "@+id/com3"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id = "@+id/com4"
                 android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
@@ -78,12 +88,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "S.2551 - Introduced 02/11/2016"
+                android:id = "@+id/bill1"
                 android:textSize="18sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "S.849 - Introduced 02/09/2016"
+                android:id = "@+id/bill2"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id = "@+id/bill3"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id = "@+id/bill4"
                 android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>

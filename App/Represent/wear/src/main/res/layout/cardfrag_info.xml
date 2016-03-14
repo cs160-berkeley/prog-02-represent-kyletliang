@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context="com.example.kyle.represent.RepActivity">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="5dp">
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:id="@+id/county"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Swipe right for Reps"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="12.5sp"/>
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="Swipe down for 2012 Vote Info"
+            android:textColor="@color/black"
+            android:textSize="12.5sp"/>
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="Shake watch for Random County"
+            android:textColor="@color/black"
+            android:textSize="12.5sp"/>
+
+    </LinearLayout>
+
+</android.support.wearable.view.BoxInsetLayout>

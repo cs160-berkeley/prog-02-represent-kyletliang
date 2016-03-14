@@ -53,7 +53,7 @@ public class WatchToPhoneService extends Service {
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
         final String name = extras.getString("NAME");
-        final String zip = extras.getString("LOC");
+        final String rand = extras.getString("RAND");
 
         // Send the message with the cat name
         new Thread(new Runnable() {
@@ -64,8 +64,8 @@ public class WatchToPhoneService extends Service {
                 //now that you're connected, send a massage with the cat name
                 if(name != null)
                     sendMessage("/" + "send_name", name);
-                if(zip != null)
-                    sendMessage("/" + "send_loc", zip);
+                if(rand != null)
+                    sendMessage("/" + "send_rand", rand);
             }
         }).start();
 

@@ -44,19 +44,14 @@ public class PhoneToWatchService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // Which cat do we want to feed? Grab this info from INTENT
-        // which was passed over when we called startService
         Bundle extras = intent.getExtras();
-        final String zipCode = extras.getString("ZIP_CODE");
-
-        // Send the message with the cat name
+        final String watchInfo= extras.getString("INFO_WATCH");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 //first, connect to the apiclient
                 mApiClient.connect();
-                //now that you're connected, send a massage with the cat name
-                sendMessage("/" + "ZIP_CODE", zipCode);
+                sendMessage("/" + "INFO_WATCH", watchInfo);
             }
         }).start();
 

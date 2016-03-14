@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.wearable.view.DotsPageIndicator;
 import android.support.wearable.view.GridViewPager;
@@ -14,8 +15,25 @@ import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.Wearable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +41,8 @@ public class RepActivity extends Activity implements SensorEventListener {
 
     private TextView mTextView;
     private String zip;
+    private String info;
+    private String[] infoArray, repArray, voteArray;
     private Page[][] data = new Page[2][];
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
@@ -32,13 +52,18 @@ public class RepActivity extends Activity implements SensorEventListener {
     private final float NOISE = (float) 2.0;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rep);
 
         Intent intent = getIntent();
-        zip = intent.getStringExtra("ZIP_CODE");
+        info = intent.getStringExtra("INFO_WATCH");
+        infoArray = info.split("//");
+        repArray = infoArray[0].split("!");
+        voteArray = infoArray[1].split("!");
+
 
         setupPageInfo();
 
@@ -46,7 +71,6 @@ public class RepActivity extends Activity implements SensorEventListener {
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
         pager.setAdapter(new SampleGridPagerAdapter(this, data, getFragmentManager()));
         mPageIndicator.setPager(pager);
-
 
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -68,17 +92,33 @@ public class RepActivity extends Activity implements SensorEventListener {
     }
 
     private void setupPageInfo(){
-        data[0] = new Page[3];
+        data[0] = new Page[repArray.length/2+1];
         data[1] = new Page[1];
+        String county;
+        if (voteArray[0] == null)
+            county = "Unknown County (Try shaking again)";
+        else
+            county = voteArray[0];
+        int bg;
+        if(Double.parseDouble(voteArray[1])>= Double.parseDouble(voteArray[2]))
+            bg = R.drawable.bluebg;
+        else
+            bg = R.drawable.redbg;
 
-        if (zip == null){
-            zip = "0";
+
+        for(int i = 0; i < repArray.length/2; i+=1){
+            if (repArray[2*i+1].equals("D")) {
+                data[0][i+1] = new Page(repArray[2 * i], "Democrat", county, R.drawable.bluebg, true);
+            }
+            else if(repArray[2*i+1].equals("R")){
+                data[0][i+1] = new Page(repArray[2 * i],"Republican", county, R.drawable.redbg, true);
+            }
+            else{
+                data[0][i+1] = new Page(repArray[2 * i],"Independent", county, R.drawable.indep, true);
+            }
         }
-
-        data[0][0] = new Page("Rep. Barbara Lee", zip, R.drawable.bluebg);
-        data[0][1] = new Page("Senator Barbara Boxer", zip, R.drawable.bluebg);
-        data[0][2] = new Page("Senator Diana Steinfeld", zip, R.drawable.bluebg);
-        data[1][0] = new Page("Barbara Boxer", zip, R.drawable.bluebg);
+        data[0][0] = new Page(voteArray[1], voteArray[2], county, bg, false);
+        data[1][0] = new Page(voteArray[1], voteArray[2], county, bg, false);
     }
 
     @Override
@@ -102,56 +142,44 @@ public class RepActivity extends Activity implements SensorEventListener {
             mLastY = y;
             mLastZ = z;
             if ((deltaX + deltaY + deltaZ) > (float) 50){
-                int range = (99999 - 10000) + 1;
-                int zip = (int)(Math.random() * range) + 10000; //randomly generated number to be zip
-
-                Intent intent = new Intent(this, RepActivity.class);
-                intent.putExtra("ZIP_CODE", Integer.toString(zip));
-                startActivity(intent);
+                int range = (43583 - 2) + 1;
+                int rand = (int)(Math.random() * range) + 1; //randomly generated number to be zip
 
                 Intent sendIntent = new Intent(getBaseContext(), WatchToPhoneService.class);
-                sendIntent.putExtra("LOC", Integer.toString(zip));
+                sendIntent.putExtra("RAND", Integer.toString(rand));
                 startService(sendIntent);
-
-
-                //Log.d("T", "ay lmao");
             }
         }
 
-
     }
+
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     public static class Page {
-        private String rep;
-        private String zipCode;
-        private String party;
-        private int mImageResource;
+        String rep;
+        String county;
+        String party;
+        String obamaVote;
+        String romneyVote;
+        int mImageResource;
 
-        public Page(String r, String z, int im){
-            rep = r;
-            zipCode = z;
+        public Page(String s1, String s2, String c, int im, boolean isRep){
+            if(isRep) {
+                rep = s1;
+                party = s2;
+            }
+            else{
+                obamaVote = s1;
+                romneyVote = s2;
+            }
             mImageResource = im;
-            party = "Democrat";
+            county = c;
         }
 
-        public String getRep(){
-            return rep;
-        }
-        public String getZipCode(){
-            return zipCode;
-        }
-        public String getParty(){
-            return party;
-        }
-        public int getmImageResource(){
-            return mImageResource;
-        }
+
     }
+
 
 }

@@ -25,25 +25,6 @@
             android:id="@+id/party"
             android:textColor="@color/black"
             android:textSize="14sp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:fontFamily="sans-serif-light"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="Zip Code: "
-                android:textColor="@color/black"
-                android:textSize="14sp"/>
-        <TextView
-            android:fontFamily="sans-serif-light"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/zip"
-            android:textColor="@color/black"
-            android:textSize="14sp"/>
-            </LinearLayout>
         <Button
             android:layout_height="35dp"
             android:textSize="11sp"
