@@ -1,10 +1,12 @@
 # PROG 02: Represent!
 
-Briefly describe your app here.
+An phone+watch application that lists info about congressional representatives given a zip code or your current location. 
+
+Disclaimer: This is by no means a fully developed application.
 
 ## Authors
 
-FirstName LastName ([your_email@berkeley.edu](mailto:your_email@berkeley.edu))
+Kyle Liang ([kyletliang@berkeley.edu](mailto:kyletliang@berkeley.edu))
 
 ## Demo Video
 
